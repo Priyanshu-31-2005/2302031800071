@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPlan - Personalized Workout Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <h1>FitPlan</h1>
+            </div>
+            <button id="savedPlansBtn" class="btn-ghost">
+                <i class="fas fa-folder-open"></i>
+                <span>My Plans</span>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Form View -->
+            <div id="formView" class="view">
+                <div class="intro">
+                    <h2>Create Your Personalized Workout Plan</h2>
+                    <p>Answer a few questions about your fitness goals, available equipment, and time constraints to generate a customized workout plan that fits your needs.</p>
+                </div>
+                
+                <div class="card">
+                    <form id="workoutForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fitnessLevel">Your Fitness Level</label>
+                                <select id="fitnessLevel" name="fitnessLevel" required>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="workoutFrequency">Workout Frequency (days per week)</label>
+                                <select id="workoutFrequency" name="workoutFrequency" required>
+                                    <option value="3">3 days</option>
+                                    <option value="4">4 days</option>
+                                    <option value="5">5 days</option>
+                                    <option value="6">6 days</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="workoutDuration">Workout Duration (minutes per session)</label>
+                            <select id="workoutDuration" name="workoutDuration" required>
+                                <option value="20">About 20 minutes</option>
+                                <option value="30">About 30 minutes</option>
+                                <option value="45">About 45 minutes</option>
+                                <option value="60">About 60 minutes</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Your Fitness Goal</label>
+                            <div class="radio-group">
+                                <label class="radio-item">
+                                    <input type="radio" name="fitnessGoal" value="strength" required>
+                                    Build Strength
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="fitnessGoal" value="muscle">
+                                    Gain Muscle
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="fitnessGoal" value="weight-loss">
+                                    Lose Weight
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="fitnessGoal" value="endurance">
+                                    Improve Endurance
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="fitnessGoal" value="flexibility">
+                                    Increase Flexibility
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="fitnessGoal" value="general">
+                                    General Fitness
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Available Equipment</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="equipment" value="none" checked>
+                                    None (Bodyweight)
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="equipment" value="dumbbells">
+                                    Dumbbells
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="equipment" value="barbell">
+                                    Barbell
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="equipment" value="resistance-bands">
+                                    Resistance Bands
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="equipment" value="kettlebell">
+                                    Kettlebell
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="equipment" value="full-gym">
+                                    Full Gym
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Focus Areas</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="focusAreas" value="upper-body">
+                                    Upper Body
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="focusAreas" value="lower-body">
+                                    Lower Body
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="focusAreas" value="core">
+                                    Core
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="focusAreas" value="cardio">
+                                    Cardio
+                                </label>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">If none selected, we'll create a balanced plan based on your goal.</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="limitations">Limitations or Injuries (Optional)</label>
+                            <textarea id="limitations" name="limitations" rows="3" placeholder="e.g., knee problems, back pain, etc."></textarea>
+                        </div>
+                        
+                        <div class="submit-row">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-dumbbell mr-2"></i>
+                                Generate My Workout Plan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Plan View -->
+            <div id="planView" class="view hidden">
+                <div class="plan-header">
+                    <h2>Your Customized Workout Plan</h2>
+                    <div class="plan-actions">
+                        <button id="savePlanBtn" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            <span>Save Plan</span>
+                        </button>
+                        <button id="printPlanBtn" class="btn-ghost">
+                            <i class="fas fa-print"></i>
+                            <span>Print</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="plan-overview">
+                        <h3>Plan Overview</h3>
+                        <div class="overview-grid">
+                            <div class="overview-item">
+                                <i class="fas fa-bullseye"></i>
+                                <div>
+                                    <div class="label">Goal</div>
+                                    <div id="planGoal" class="value">Build Strength</div>
+                                </div>
+                            </div>
+                            <div class="overview-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <div class="label">Frequency</div>
+                                    <div id="planFrequency" class="value">3 days per week</div>
+                                </div>
+                            </div>
+                            <div class="overview-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <div class="label">Duration</div>
+                                    <div id="planDuration" class="value">30 minutes per session</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Workout Day Tabs -->
+                    <div id="dayTabs" class="tabs">
+                        <!-- Tabs will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <!-- Workout Day Content -->
+                    <div id="dayContent" class="tab-content">
+                        <!-- Workout content will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <!-- Progress Tracker -->
+                    <div class="progress-tracker">
+                        <div class="tracker-header">
+                            <h3>Progress Tracker</h3>
+                            <button id="resetProgressBtn" class="btn-text">
+                                <i class="fas fa-redo-alt"></i>
+                                Reset Progress
+                            </button>
+                        </div>
+                        <p class="mb-3">Track your completed workouts by clicking on a day below:</p>
+                        <div id="progressGrid" class="tracker-grid">
+                            <!-- Progress tracker items will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="edit-preferences">
+                        <button id="editPreferencesBtn" class="btn-outline">
+                            <i class="fas fa-edit"></i>
+                            Edit Preferences
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Saved Plans View -->
+            <div id="savedPlansView" class="view hidden">
+                <div class="saved-plans-header">
+                    <h2>My Saved Workout Plans</h2>
+                    <button id="backToFormBtn" class="btn-outline">
+                        <i class="fas fa-plus"></i>
+                        Create New Plan
+                    </button>
+                </div>
+                
+                <div id="savedPlansList" class="saved-plans-list">
+                    <!-- Saved plan cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <i class="fas fa-code"></i>
+                <span>© <span id="currentYear">2023</span> FitPlan. All rights reserved.</span>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <div class="toast-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="toast-message">
+                <h4 id="toastTitle">Success</h4>
+                <p id="toastDescription">Your workout plan has been saved successfully!</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confirmation Dialog -->
+    <div id="confirmDialog" class="dialog-overlay">
+        <div class="dialog-content">
+            <h3 id="dialogTitle">Confirm Action</h3>
+            <p id="dialogMessage">Are you sure you want to proceed with this action?</p>
+            <div class="dialog-actions">
+                <button id="dialogCancelBtn" class="btn-ghost">Cancel</button>
+                <button id="dialogConfirmBtn" class="btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="workout-data.js"></script>
+    <script src="storage.js"></script>
+    <script src="workout-generator.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
